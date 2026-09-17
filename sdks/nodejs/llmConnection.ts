@@ -41,9 +41,9 @@ export class LlmConnection extends pulumi.CustomResource {
      */
     declare public readonly baseUrl: pulumi.Output<string | undefined>;
     /**
-     * Adapter-specific configuration as a JSON string.
+     * Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
      */
-    declare public readonly config: pulumi.Output<string | undefined>;
+    declare public readonly config: pulumi.Output<string>;
     /**
      * Optional list of custom model identifiers.
      */
@@ -144,7 +144,7 @@ export interface LlmConnectionState {
      */
     baseUrl?: pulumi.Input<string | undefined>;
     /**
-     * Adapter-specific configuration as a JSON string.
+     * Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
      */
     config?: pulumi.Input<string | undefined>;
     /**
@@ -190,7 +190,7 @@ export interface LlmConnectionArgs {
      */
     baseUrl?: pulumi.Input<string | undefined>;
     /**
-     * Adapter-specific configuration as a JSON string.
+     * Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
      */
     config?: pulumi.Input<string | undefined>;
     /**

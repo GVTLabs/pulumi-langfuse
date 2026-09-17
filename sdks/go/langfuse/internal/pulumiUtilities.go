@@ -167,19 +167,19 @@ func callPlainInner(
 // The reference is cached per pulumi.Context so that concurrent inline
 // programs each register with their own engine and receive distinct refs.
 func PkgGetPackageRef(ctx *pulumi.Context) (string, error) {
-	return ctx.GetOrRegisterPackageRef("langfuse:0.8.0", func() (*pulumirpc.RegisterPackageRequest, error) {
-		parameter, err := base64.StdEncoding.DecodeString("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4wIn19")
+	return ctx.GetOrRegisterPackageRef("langfuse:0.8.1", func() (*pulumirpc.RegisterPackageRequest, error) {
+		parameter, err := base64.StdEncoding.DecodeString("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4xIn19")
 		if err != nil {
 			return nil, err
 		}
 
 		return &pulumirpc.RegisterPackageRequest{
 			Name:        "terraform-provider",
-			Version:     "1.3.0",
+			Version:     "1.4.0",
 			DownloadUrl: "",
 			Parameterization: &pulumirpc.Parameterization{
 				Name:    "langfuse",
-				Version: "0.8.0",
+				Version: "0.8.1",
 				Value:   parameter,
 			},
 		}, nil
@@ -190,7 +190,7 @@ func PkgGetPackageRef(ctx *pulumi.Context) (string, error) {
 func PkgResourceDefaultOpts(opts []pulumi.ResourceOption) []pulumi.ResourceOption {
 	defaults := []pulumi.ResourceOption{}
 
-	version := semver.MustParse("0.8.0")
+	version := semver.MustParse("0.8.1")
 	if !version.Equals(semver.Version{}) {
 		defaults = append(defaults, pulumi.Version(version.String()))
 	}
@@ -201,7 +201,7 @@ func PkgResourceDefaultOpts(opts []pulumi.ResourceOption) []pulumi.ResourceOptio
 func PkgInvokeDefaultOpts(opts []pulumi.InvokeOption) []pulumi.InvokeOption {
 	defaults := []pulumi.InvokeOption{}
 
-	version := semver.MustParse("0.8.0")
+	version := semver.MustParse("0.8.1")
 	if !version.Equals(semver.Version{}) {
 		defaults = append(defaults, pulumi.Version(version.String()))
 	}

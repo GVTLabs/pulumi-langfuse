@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.3.0",
+		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "langfuse",
-		packageVersion: "0.8.0",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4wIn19",
+		packageVersion: "0.8.1",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4xIn19",
 	});
 }

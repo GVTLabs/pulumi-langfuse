@@ -49,14 +49,14 @@ public final class LlmConnectionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Adapter-specific configuration as a JSON string.
+     * Adapter-specific configuration as a JSON string. Required for bedrock (`{&#34;region&#34;: &#34;&lt;aws-region&gt;&#34;}`), optional for openai (`{&#34;useResponsesApi&#34;: &lt;bool&gt;}`) and google-vertex-ai (`{&#34;location&#34;: &#34;&lt;gcp-location&gt;&#34;}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return Adapter-specific configuration as a JSON string.
+     * @return Adapter-specific configuration as a JSON string. Required for bedrock (`{&#34;region&#34;: &#34;&lt;aws-region&gt;&#34;}`), optional for openai (`{&#34;useResponsesApi&#34;: &lt;bool&gt;}`) and google-vertex-ai (`{&#34;location&#34;: &#34;&lt;gcp-location&gt;&#34;}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
      * 
      */
     public Optional<Output<String>> config() {
@@ -244,7 +244,7 @@ public final class LlmConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param config Adapter-specific configuration as a JSON string.
+         * @param config Adapter-specific configuration as a JSON string. Required for bedrock (`{&#34;region&#34;: &#34;&lt;aws-region&gt;&#34;}`), optional for openai (`{&#34;useResponsesApi&#34;: &lt;bool&gt;}`) and google-vertex-ai (`{&#34;location&#34;: &#34;&lt;gcp-location&gt;&#34;}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class LlmConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param config Adapter-specific configuration as a JSON string.
+         * @param config Adapter-specific configuration as a JSON string. Required for bedrock (`{&#34;region&#34;: &#34;&lt;aws-region&gt;&#34;}`), optional for openai (`{&#34;useResponsesApi&#34;: &lt;bool&gt;}`) and google-vertex-ai (`{&#34;location&#34;: &#34;&lt;gcp-location&gt;&#34;}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
          * 
          * @return builder
          * 

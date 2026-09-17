@@ -25,10 +25,10 @@ namespace Pulumi.Langfuse
         public Output<string?> BaseUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Adapter-specific configuration as a JSON string.
+        /// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "&lt;aws-region&gt;"}`), optional for openai (`{"useResponsesApi": &lt;bool&gt;}`) and google-vertex-ai (`{"location": "&lt;gcp-location&gt;"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         /// </summary>
         [Output("config")]
-        public Output<string?> Config { get; private set; } = null!;
+        public Output<string> Config { get; private set; } = null!;
 
         /// <summary>
         /// Optional list of custom model identifiers.
@@ -138,7 +138,7 @@ namespace Pulumi.Langfuse
         public Input<string>? BaseUrl { get; set; }
 
         /// <summary>
-        /// Adapter-specific configuration as a JSON string.
+        /// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "&lt;aws-region&gt;"}`), optional for openai (`{"useResponsesApi": &lt;bool&gt;}`) and google-vertex-ai (`{"location": "&lt;gcp-location&gt;"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.Langfuse
         public Input<string>? BaseUrl { get; set; }
 
         /// <summary>
-        /// Adapter-specific configuration as a JSON string.
+        /// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "&lt;aws-region&gt;"}`), optional for openai (`{"useResponsesApi": &lt;bool&gt;}`) and google-vertex-ai (`{"location": "&lt;gcp-location&gt;"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }

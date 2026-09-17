@@ -38,7 +38,7 @@ class LlmConnectionArgs:
         :param pulumi.Input[_builtins.str] provider_name: The unique name identifying this LLM connection within the project. Changing this value destroys and recreates the resource, as the provider name is the upsert key.
         :param pulumi.Input[_builtins.str] secret_key: The API authentication key for the LLM provider.
         :param pulumi.Input[_builtins.str] base_url: Optional base URL override for the LLM provider API.
-        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string.
+        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_models: Optional list of custom model identifiers.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_headers: Optional map of additional HTTP headers for LLM API requests.
         :param pulumi.Input[_builtins.bool] with_default_models: Whether to include default models. Defaults to true if not set.
@@ -135,7 +135,7 @@ class LlmConnectionArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Adapter-specific configuration as a JSON string.
+        Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         """
         return pulumi.get(self, "config")
 
@@ -198,7 +198,7 @@ class _LlmConnectionState:
 
         :param pulumi.Input[_builtins.str] adapter: The LLM service type. Valid values: anthropic, openai, azure, bedrock, google-vertex-ai, google-ai-studio.
         :param pulumi.Input[_builtins.str] base_url: Optional base URL override for the LLM provider API.
-        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string.
+        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_models: Optional list of custom model identifiers.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_headers: Optional map of additional HTTP headers for LLM API requests.
         :param pulumi.Input[_builtins.str] project_public_key: The project public key used to authenticate API calls.
@@ -256,7 +256,7 @@ class _LlmConnectionState:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Adapter-specific configuration as a JSON string.
+        Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         """
         return pulumi.get(self, "config")
 
@@ -373,7 +373,7 @@ class LlmConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] adapter: The LLM service type. Valid values: anthropic, openai, azure, bedrock, google-vertex-ai, google-ai-studio.
         :param pulumi.Input[_builtins.str] base_url: Optional base URL override for the LLM provider API.
-        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string.
+        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_models: Optional list of custom model identifiers.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_headers: Optional map of additional HTTP headers for LLM API requests.
         :param pulumi.Input[_builtins.str] project_public_key: The project public key used to authenticate API calls.
@@ -477,7 +477,7 @@ class LlmConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] adapter: The LLM service type. Valid values: anthropic, openai, azure, bedrock, google-vertex-ai, google-ai-studio.
         :param pulumi.Input[_builtins.str] base_url: Optional base URL override for the LLM provider API.
-        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string.
+        :param pulumi.Input[_builtins.str] config: Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_models: Optional list of custom model identifiers.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_headers: Optional map of additional HTTP headers for LLM API requests.
         :param pulumi.Input[_builtins.str] project_public_key: The project public key used to authenticate API calls.
@@ -520,9 +520,9 @@ class LlmConnection(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def config(self) -> pulumi.Output[_builtins.str]:
         """
-        Adapter-specific configuration as a JSON string.
+        Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
         """
         return pulumi.get(self, "config")
 

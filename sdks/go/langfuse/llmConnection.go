@@ -19,8 +19,8 @@ type LlmConnection struct {
 	Adapter pulumi.StringOutput `pulumi:"adapter"`
 	// Optional base URL override for the LLM provider API.
 	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
-	// Adapter-specific configuration as a JSON string.
-	Config pulumi.StringPtrOutput `pulumi:"config"`
+	// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
+	Config pulumi.StringOutput `pulumi:"config"`
 	// Optional list of custom model identifiers.
 	CustomModels pulumi.StringArrayOutput `pulumi:"customModels"`
 	// Optional map of additional HTTP headers for LLM API requests.
@@ -113,7 +113,7 @@ type llmConnectionState struct {
 	Adapter *string `pulumi:"adapter"`
 	// Optional base URL override for the LLM provider API.
 	BaseUrl *string `pulumi:"baseUrl"`
-	// Adapter-specific configuration as a JSON string.
+	// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
 	Config *string `pulumi:"config"`
 	// Optional list of custom model identifiers.
 	CustomModels []string `pulumi:"customModels"`
@@ -136,7 +136,7 @@ type LlmConnectionState struct {
 	Adapter pulumi.StringPtrInput
 	// Optional base URL override for the LLM provider API.
 	BaseUrl pulumi.StringPtrInput
-	// Adapter-specific configuration as a JSON string.
+	// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
 	Config pulumi.StringPtrInput
 	// Optional list of custom model identifiers.
 	CustomModels pulumi.StringArrayInput
@@ -163,7 +163,7 @@ type llmConnectionArgs struct {
 	Adapter string `pulumi:"adapter"`
 	// Optional base URL override for the LLM provider API.
 	BaseUrl *string `pulumi:"baseUrl"`
-	// Adapter-specific configuration as a JSON string.
+	// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
 	Config *string `pulumi:"config"`
 	// Optional list of custom model identifiers.
 	CustomModels []string `pulumi:"customModels"`
@@ -187,7 +187,7 @@ type LlmConnectionArgs struct {
 	Adapter pulumi.StringInput
 	// Optional base URL override for the LLM provider API.
 	BaseUrl pulumi.StringPtrInput
-	// Adapter-specific configuration as a JSON string.
+	// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
 	Config pulumi.StringPtrInput
 	// Optional list of custom model identifiers.
 	CustomModels pulumi.StringArrayInput
@@ -252,9 +252,9 @@ func (o LlmConnectionOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LlmConnection) pulumi.StringPtrOutput { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
-// Adapter-specific configuration as a JSON string.
-func (o LlmConnectionOutput) Config() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LlmConnection) pulumi.StringPtrOutput { return v.Config }).(pulumi.StringPtrOutput)
+// Adapter-specific configuration as a JSON string. Required for bedrock (`{"region": "<aws-region>"}`), optional for openai (`{"useResponsesApi": <bool>}`) and google-vertex-ai (`{"location": "<gcp-location>"}`), and unsupported for other adapters. Computed, because the API returns any config the connection holds and offers no way to unset one.
+func (o LlmConnectionOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v *LlmConnection) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }
 
 // Optional list of custom model identifiers.

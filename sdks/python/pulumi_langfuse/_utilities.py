@@ -323,15 +323,15 @@ def get_plugin_download_url():
 	return None
 
 def get_version():
-    return "0.8.0"
+    return "0.8.1"
 
 async def get_package() -> str:
 	return await pulumi.runtime.register_package(
 		base_provider_name="terraform-provider",
-		base_provider_version="1.3.0",
+		base_provider_version="1.4.0",
 		base_provider_download_url=get_plugin_download_url() or "",
 		package_name="langfuse",
 		package_version=get_version(),
-		base64_parameter="eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4wIn19",
+		base64_parameter="eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4xIn19",
 	)
 	

@@ -67,12 +67,12 @@ namespace Pulumi.Langfuse
         {
             return new global::Pulumi.RegisterPackageRequest(
                 name: "terraform-provider",
-                version: "1.3.0",
+                version: "1.4.0",
                 downloadUrl: "",
                 parameterization: new global::Pulumi.RegisterPackageRequest.PackageParameterization(
                     name: "langfuse",
-                    version: "0.8.0",
-                    value: global::System.Convert.FromBase64String("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4wIn19")));
+                    version: "0.8.1",
+                    value: global::System.Convert.FromBase64String("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2xhbmdmdXNlL2xhbmdmdXNlIiwidmVyc2lvbiI6IjAuOC4xIn19")));
         }
 
         private readonly static string version;
